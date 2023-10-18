@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3mvu74nj15k2"]
+[gd_scene load_steps=6 format=3 uid="uid://c3mvu74nj15k2"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_s4o40"]
 [ext_resource type="Texture2D" uid="uid://dkrfc8jsaimyh" path="res://pattern_checkerboard.png" id="2_xp23p"]
+[ext_resource type="Script" path="res://ObstacleSpawner.gd" id="3_x2trf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dy04"]
 albedo_texture = ExtResource("2_xp23p")
@@ -27,4 +28,18 @@ transform = Transform3D(1, 0, 0, 0, 0.984106, 0.177583, 0, -0.177583, 0.984106, 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Obstacles" type="Node3D" parent="."]
+[node name="Spawners" type="Node" parent="."]
+
+[node name="ObstacleSpawner" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63)
+script = ExtResource("3_x2trf")
+
+[node name="Pos_0" type="Node3D" parent="Spawners/ObstacleSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="Pos_1" type="Node3D" parent="Spawners/ObstacleSpawner"]
+
+[node name="Pos_2" type="Node3D" parent="Spawners/ObstacleSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Obstacles" type="Node" parent="."]
