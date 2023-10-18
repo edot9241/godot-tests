@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3mvu74nj15k2"]
 
-[ext_resource type="Texture2D" uid="uid://dkrfc8jsaimyh" path="res://pattern_checkerboard_1_3_0-0_0_2__fce9db_e0a899.png" id="1_iu46d"]
-[ext_resource type="Script" path="res://node_3d.gd" id="1_n27nc"]
+[ext_resource type="Script" path="res://world.gd" id="1_s4o40"]
+[ext_resource type="Texture2D" uid="uid://dkrfc8jsaimyh" path="res://pattern_checkerboard.png" id="2_xp23p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dy04"]
-albedo_texture = ExtResource("1_iu46d")
+albedo_texture = ExtResource("2_xp23p")
 uv1_scale = Vector3(5, 2, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q8ru1"]
 
-[node name="Node3D" type="Node3D"]
-script = ExtResource("1_n27nc")
+[node name="World" type="Node3D"]
+script = ExtResource("1_s4o40")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
