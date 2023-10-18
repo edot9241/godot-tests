@@ -1,6 +1,6 @@
 extends Node3D
 
-var test_object = preload("res://test_object.tscn")
+var obstacle = preload("res://obstacle.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +10,7 @@ func _on_timeout():
 	_spawn_obstacle()
 
 func _spawn_obstacle():
-	var obj = test_object.instantiate()
+	var obj = obstacle.instantiate()
 	$Obstacles.add_child(obj)
 
 	for child in $Obstacles.get_children():
