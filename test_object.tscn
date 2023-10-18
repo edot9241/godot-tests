@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ew3gkunvk0i"]
+
+[ext_resource type="Script" path="res://test_object.gd" id="1_40fc2"]
+[ext_resource type="Script" path="res://MeshInstance3D.gd" id="2_xk1c5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0e17c"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_40fc2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_0e17c")
+script = ExtResource("2_xk1c5")
