@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3mvu74nj15k2"]
+[gd_scene load_steps=7 format=3 uid="uid://c3mvu74nj15k2"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_s4o40"]
 [ext_resource type="Texture2D" uid="uid://dkrfc8jsaimyh" path="res://pattern_checkerboard.png" id="2_xp23p"]
+[ext_resource type="PackedScene" uid="uid://bxx53bapa8fm4" path="res://player/player.tscn" id="3_mcd2n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dy04"]
 albedo_texture = ExtResource("2_xp23p")
 uv1_scale = Vector3(5, 2, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q8ru1"]
+size = Vector3(50, 0, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frit8"]
+size = Vector3(50, 0, 25)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_s4o40")
@@ -16,11 +21,6 @@ script = ExtResource("1_s4o40")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(48.3438, 0, 0, 0, 0.0398848, 0, 0, 0, 22.9688, -0.0113312, 0, 0)
-material_override = SubResource("StandardMaterial3D_2dy04")
-mesh = SubResource("BoxMesh_q8ru1")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984106, 0.177583, 0, -0.177583, 0.984106, -0.0113312, 5, 12)
 
@@ -28,3 +28,17 @@ transform = Transform3D(1, 0, 0, 0, 0.984106, 0.177583, 0, -0.177583, 0.984106, 
 autostart = true
 
 [node name="Obstacles" type="Node3D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_mcd2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6.37589)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0113312, 0, 0)
+material_override = SubResource("StandardMaterial3D_2dy04")
+mesh = SubResource("BoxMesh_q8ru1")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_frit8")
